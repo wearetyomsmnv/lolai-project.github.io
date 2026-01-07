@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<div class="container agent-page">
+    <div class="agent-header">
+        <h1>{{ page.title }}</h1>
+        <div class="agent-meta">
+            <span class="badge category">{{ page.category }}</span>
+            <span class="badge vendor">{{ page.vendor }}</span>
+            {% for platform in page.platforms %}
+            <span class="badge platform">{{ platform }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="agent-info-grid">
+        <div class="info-card">
+            <h3>Vendor</h3>
+            <p>{{ page.vendor }}</p>
+        </div>
+        <div class="info-card">
+            <h3>Category</h3>
+            <p>{{ page.category }}</p>
+        </div>
+        <div class="info-card">
+            <h3>Privilege Level</h3>
+            <p>{{ page.privilege_level | default: "User" }}</p>
+        </div>
+        <div class="info-card">
+            <h3>Version</h3>
+            <p>{{ page.version | default: "Latest" }}</p>
+        </div>
+    </div>
+
+    {% if page.capabilities %}
+    <section class="agent-section">
+        <h2>Capabilities</h2>
+        <ul class="capabilities-list">
+            {% for capability in page.capabilities %}
+            <li>{{ capability }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <section class="agent-section">
+        <div class="content-wrapper">
+            {{ content }}
+        </div>
+    </section>
+
+    {% if page.mitre_techniques %}
+    <section class="agent-section">
+        <h2>MITRE ATT&CK Techniques</h2>
+        <div class="mitre-tags">
+            {% for technique in page.mitre_techniques %}
+            <a href="https://attack.mitre.org/techniques/{{ technique }}/" target="_blank" class="mitre-tag">{{ technique }}</a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <div class="agent-footer">
+        <a href="{{ '/agents/' | relative_url }}" class="btn-back">← Back to Agents</a>
+    </div>
+</div>

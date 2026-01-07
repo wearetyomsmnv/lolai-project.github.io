@@ -1,0 +1,69 @@
+---
+layout: default
+title: Home
+---
+
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">Living Off The Land AI</h1>
+        <p class="hero-subtitle">A curated database of AI agents with their attack vectors, abuse techniques, and detection methods</p>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search agents, techniques, or capabilities..." class="search-input">
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">{{ site.agents.size }}</span>
+                <span class="stat-label">AI Agents</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">{{ site.agents | map: 'category' | uniq | size }}</span>
+                <span class="stat-label">Categories</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <section class="agents-section">
+        <h2>Latest Agents</h2>
+        
+        <div id="agents-grid" class="agents-grid">
+            {% for agent in site.agents %}
+            <div class="agent-card" data-category="{{ agent.category }}" data-platforms="{{ agent.platforms | join: ' ' }}">
+                <h3><a href="{{ agent.url | relative_url }}">{{ agent.title }}</a></h3>
+                <p class="agent-vendor">{{ agent.vendor }}</p>
+                <div class="agent-tags">
+                    <span class="tag category">{{ agent.category }}</span>
+                    {% for platform in agent.platforms limit:2 %}
+                    <span class="tag platform">{{ platform }}</span>
+                    {% endfor %}
+                </div>
+                {% if agent.capabilities %}
+                <div class="agent-capabilities">
+                    <strong>Key Capabilities:</strong>
+                    <ul>
+                        {% for capability in agent.capabilities limit:3 %}
+                        <li>{{ capability }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <a href="{{ agent.url | relative_url }}" class="card-link">View Details →</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="about-section">
+        <h2>About LOLAI</h2>
+        <p>LOLAI documents AI agents that can be abused for malicious purposes in enterprise and personal environments. Similar to GTFOBins and LOLBAS projects, we provide detailed information about:</p>
+        <ul>
+            <li><strong>Attack Vectors:</strong> How these agents can be weaponized</li>
+            <li><strong>Capabilities:</strong> What system access and permissions they have</li>
+            <li><strong>Detection:</strong> Artifacts, logs, and IOCs for blue teams</li>
+            <li><strong>MITRE ATT&CK Mapping:</strong> Aligned with industry frameworks</li>
+        </ul>
+    </section>
+</div>

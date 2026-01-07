@@ -1,0 +1,36 @@
+title: LOLAI
+description: Living Off The Land AI - Database of AI Agents Attack Vectors & Abuse Techniques
+baseurl: ""
+url: "https://lolai-project.github.io"
+
+# Collections
+collections:
+  agents:
+    output: true
+    permalink: /agents/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "agents"
+    values:
+      layout: "agent"
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

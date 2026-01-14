@@ -216,7 +216,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 - Create an [Issue](https://github.com/lolai-project/lolai-project.github.io/issues)
 - Submit a [Pull Request](https://github.com/lolai-project/lolai-project.github.io/pulls)
-- Twitter: [@yourusername](https://x.com/s0ld133rr)
+- Twitter: [@s0ld133rr](https://x.com/s0ld133rr)
 
 ---
 
